@@ -5,19 +5,24 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
+import java.io.IOException;
+import java.net.UnknownHostException;
 
 public class SampleSocketClient {
 Socket server;
 public void connect(String address, int port) {
 try {
 server = new Socket(address, port);
-System.out.println("Client accepted");
+System.out.println("Client accpeted");
+}
+catch (UnknownHostException e) {
+e.printStackTrace();
 }
 catch(Exception e) {
 e.printStackTrace();
 }
 }
-public void start() {
+public void start() throws IOException {
 if(server == null) {
 System.out.println("Server isn't set??");
 return;
@@ -42,6 +47,19 @@ break;
 }
 } catch(Exception e) {e.printStackTrace();}
 }} catch(Exception e) {e.printStackTrace();}
+finally {
+close();
+}
+}
+private void close() {
+if(server != null) {
+try {
+server.close();
+System.out.println("Closed socket");
+} catch (IOException e) {
+e.printStackTrace();
+}
+}
 }
 public static void main(String[] args) {
 // TODO Auto-generated method stub
