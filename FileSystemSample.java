@@ -68,15 +68,20 @@ public class FileSystemSample {
 		        
 		        if (nl.contains("=")) {
 		        	String[] data = nl.split("=");
-		        	if(data[1] instanceof String) {
-		        		String name = data[0];
-		        	}
-		        	else {
-		        		int number = Integer.parseInt(data[1]);
-		        	}
-		        	System.out.println("The string is " + data[0] + " and the value is " + data[1]);
+		        	String name = null;
+		        	int number = -1;
+		        		name = data[0];
+		        		try {
+		        			number = Integer.parseInt(data[1].trim());
+		        		}
+		        		catch(Exception e) {
+		        			
+		        		}
+		        	System.out.println("The string is " + name + " and the value is " + number);
 		        }
 		        
+		        //Scanner.nextLine() returns line but excludes the line separator
+		        //Therefore, append it back so it will show correctly in the console
 		        
 		        if(reader.hasNextLine()) {//just a check to not append an extra line ending at the end
 		        	fullText += System.lineSeparator();
