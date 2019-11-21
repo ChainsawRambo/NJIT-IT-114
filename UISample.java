@@ -178,6 +178,9 @@ class Interaction {
 	public void sendChoice(String choice) {
 		client.sendChoice(choice);
 	}
+	public void sendpm(String pm) {
+		client.sendpm(pm);
+	}
 	public boolean isClientConnected() {
 		if(client == null) {
 			return true;//just so loop doesn't die early
