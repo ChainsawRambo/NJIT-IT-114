@@ -5,5 +5,6 @@ public enum TypePayload {
 	UPDATE_NAME,
 	DISCONNECT,
 	MESSAGE,
-	CHOICE
+	CHOICE,
+	DIRECT
 }
