@@ -10,13 +10,20 @@ public class Payload implements Serializable{
 	public TypePayload payloadType;
 	public String message;
 	public int number;
+	public String target;
 	//TODO add relevant datatypes, you can share variables based on payloadType
 	public Payload(TypePayload type, String message) {
+	//	this.payloadType = type;
+	//	this.message = message;
+		this(type,message,null);
+	}
+	public Payload(TypePayload type, String message, String target) {
 		this.payloadType = type;
 		this.message = message;
+		this.target = target;
 	}
 	@Override
 	public String toString() {
-		return "Payload[payloadType: " + payloadType.toString() + ", message: " + message + ", number: " + number; 
+		return "Payload[payloadType: " + payloadType.toString() + ", message: " + message + ", number: " + number +", target: " + target; 
 	}
 }
