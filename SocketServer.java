@@ -89,6 +89,7 @@ public class SocketServer{
 	public synchronized void sendToClientByName(String name, Payload payload) {
 		for(int i = 0; i < clients.size(); i++) {
 			if(clients.get(i).getClientName().equals(name)) {
+				payload.payloadType = TypePayload.MESSAGE;
 				clients.get(i).send(payload);
 				break;//jump out of loop
 			}
@@ -124,7 +125,7 @@ public class SocketServer{
 					Socket client = serverSocket.accept();
 					System.out.println("Client connected");
 					ThreadServer thread = new ThreadServer(client, 
-							"Client " + clientId,
+							"Client_" + clientId,
 							this);
 					thread.start();//start client thread
 					clients.add(thread);//add to client pool
