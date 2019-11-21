@@ -72,6 +72,10 @@ public class ThreadServer extends Thread{
 				//otherwise records my choice and waits for opponent
 				server.HandleChoice(clientName, payload.message);
 				break;
+			case DIRECT:
+				
+				server.sendToClientByName(payload.target, payload);
+				break;
 			default:
 				break;
 		}
