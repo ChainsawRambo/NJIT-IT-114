@@ -22,8 +22,27 @@ public class SocketClient {
 		}
 	}
 	public void sendChoice(String message) {
+		 if (message.indexOf("@") > -1) {
+			 sendpm(message);
+			 return;
+		 }
 		try {
 			out.writeObject(new Payload(TypePayload.MESSAGE, message));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void sendpm(String message) {
+		try {
+			if (message.indexOf("@") > -1) {
+				String[] m = message.split("@");
+				String start = m[1];
+				String[] part = start.split(" ");
+				String clientName = part[0];
+				out.writeObject(new Payload(TypePayload.DIRECT, message, clientName));
+			}
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
